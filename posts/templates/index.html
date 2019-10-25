@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+
+<h1 style="text-align:center; margin-top: 50px; margin-bottom:50px; font-family: 'Anton', sans-serif;"> Welcome to
+    instagram</h1>
+<div class="container">
+
+
+
+    {% for image in images %}
+    <!--Display  images  -->
+
+    <div class="col-md-12" style="margin-left:25%">
+
+        <img src="{{user.profile.profile_photo.url}}" alt="Profile" class="img_profile" class="img-responsive" style="border-radius: 50%; width: 10%">
+        
+        <a href="{%url 'add_profile' %} " style="color:white; background-color:blue; margin-top:30px;font-size: 40px; border-radius: 50%; width: 50px">&#43;</a>
+        <div>
+        <img src="{{image.image.url}}" class="img-responsive" alt="Image" data-toggle="modal" data-target="#{{image.id}}"
+            style="height: 800px; width:600px">
+        <h6><strong>Image-caption:</strong>{{ image.image_caption}} </h6>
+
+    </div>
+
+
+    </div>
+    <!-- Modal -->
+    <div class="col-md-4">
+        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">{{image.image_name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Image Description</h2>
+                        <hr>
+                        <img src="{{image.image.url}}" class="img-responsive" alt="Image" style="height: 400px; width:400px">
+                        <p><strong>Description</strong>: {{ image.image_caption}} </p>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+
+</div>
+
+
+{% endblock %}
