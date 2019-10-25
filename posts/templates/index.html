@@ -5,14 +5,13 @@
 {{block.super}}
 <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
 
-<h1 style="text-align:center; margin-top: 50px; margin-bottom:50px; font-family: 'Anton', sans-serif;"> Welcome to
-    instagram</h1>
+<h1 style="text-align:center; margin-top: 50px; margin-bottom:50px; font-family: 'Anton', sans-serif;"> Awwards App</h1>
 <div class="container">
 
 
 
-    {% for image in images %}
-    <!--Display  images  -->
+    {% for project in projects %}
+    <!--Display  projects  -->
 
     <div class="col-md-12" style="margin-left:25%">
 
@@ -20,9 +19,9 @@
         
         <a href="{%url 'add_profile' %} " style="color:white; background-color:blue; margin-top:30px;font-size: 40px; border-radius: 50%; width: 50px">&#43;</a>
         <div>
-        <img src="{{image.image.url}}" class="img-responsive" alt="Image" data-toggle="modal" data-target="#{{image.id}}"
+        <img src="{{project.project.url}}" class="img-responsive" alt="Project" data-toggle="modal" data-target="#{{project.id}}"
             style="height: 800px; width:600px">
-        <h6><strong>Image-caption:</strong>{{ image.image_caption}} </h6>
+        <h6><strong>Project-caption:</strong>{{ project.project_caption}} </h6>
 
     </div>
 
@@ -30,21 +29,21 @@
     </div>
     <!-- Modal -->
     <div class="col-md-4">
-        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        <div class="modal fade" id="{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">{{image.image_name}}</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">{{project.project_name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h2>Image Description</h2>
+                        <h2>Project Description</h2>
                         <hr>
-                        <img src="{{image.image.url}}" class="img-responsive" alt="Image" style="height: 400px; width:400px">
-                        <p><strong>Description</strong>: {{ image.image_caption}} </p>
+                        <img src="{{project.project.url}}" class="img-responsive" alt="Image" style="height: 400px; width:400px">
+                        <p><strong>Description</strong>: {{ project.project_caption}} </p>
                         
 
                     </div>
