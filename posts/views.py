@@ -37,7 +37,7 @@ def new_project(request):
 def add_profile(request):
     current_user = request.user
     prof_update = Profile.objects.filter(user=current_user).first()
-    images = Image.objects.filter(user=current_user)
+    projects = Profile.objects.filter(user=current_user)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
     
