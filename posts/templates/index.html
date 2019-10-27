@@ -13,12 +13,12 @@
     {% for project in projects %}
     <!--Display  projects  -->
 
-    <div class="col-md-3" style="margin-left:25%">
+    <div class="col-md-3">
         <img src="{{project.project.url}}" class="img-responsive" alt="Project" data-toggle="modal" data-target="#{{project.id}}"
             style="height: 800px; width:600px">
             <h6><strong>Project-title:</strong>{{ project.project_title}} </h6>
         <h6><strong>Project-description:</strong>{{ project.project_description}} </h6>
-        <h6><strong>Project-caption:</strong>{{ project.project_link}} </h6>
+        <a href="{{project.project_link}}"> project_link</a>
 
     </div>
 
