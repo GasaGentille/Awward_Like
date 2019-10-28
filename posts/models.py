@@ -17,7 +17,7 @@ class Project(models.Model):
     
 
     def __str__(self):
-        return self.project_title
+        return self.title
 
     def save_project(self):
         self.save()
@@ -44,18 +44,15 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-    @classmethod
-    def search_profile(cls, username):
-        return cls.objects.filter(name__icontains=username)
-
-    @classmethod
-    def search_by_user(cls,search_term):
-        profile = cls.objects.filter(title__icontains=search_term)
-        return profile
-
     def save_profile(self):
         self.user
     def delete_profile(self):
         self.delete()
 
-
+class Rate(models.Model):
+    design = models.IntegerField(blank=True,default=0)
+    usability = models.IntegerField(blank=True,default=0)
+    content = models.IntegerField(blank=True,default=0)
+    overall_score = models.IntegerField(blank=True,default=0)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)

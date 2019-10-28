@@ -15,7 +15,7 @@ def project(request):
 @login_required(login_url='/accounts/login/')
 def profile(request, username=None):
     current_user = request.user
-    prjects = Image.objects.filter(user = current_user)
+    prjects = Project.objects.filter(user = current_user)
     return  render (request,'profile.html',locals(),{"prjects":prjects})
 
 @login_required(login_url='/accounts/login/')
@@ -73,13 +73,13 @@ def update_profile(request):
     return render(request, 'update.html', {"form": form})
 
 def search_results(request):
-   
-    if 'project' in request.GET and request.GET["project"]:
-        search_term = request.GET.get("project")
-        searched_projects = Project.search_by_title(search_term)
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Project.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"projects": searched_projects})
+        return render(request, 'search.html',{"message":message,"articles": searched_articles})
 
     else:
         message = "You haven't searched for any term"

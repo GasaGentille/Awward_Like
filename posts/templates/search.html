@@ -1,30 +1,43 @@
-{%extends 'base.html'%} 
+{%extends 'base.html'%}
 {% block content %}
 {% load bootstrap4 %}
 {% load static %}
 <div class="container">
 
-  <div class="row">
-    {% if projects %}
-      <h2>Found {{ projects|length }} of searched term {{message}}</h2>
-    {% else %}
-      <h2> Found 0 projects for the search term {{message}}</h2>
-    {% endif %}
+    <div class="row">
+        {% if articles %}
+        <h2>Found {{ articles|length }} of searched term {{message}}</h2>
+        {% else %}
+        <h2> Found 0 articles for the search term {{message}}</h2>
+        {% endif %}
 
-  </div>
+    </div>
 
-  <div class="row">
+    <div class="row">
 
-  {% if projects %}
-    {% for project in projects %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{project.title}}</h1>
-          <img src="{{project.project.url}}">
-      </div>
-      <img src="{{project.project.url}}" class="img-responsive" alt="Project" data-toggle="modal" data-target="#{{project.id}}"
-        style="height: 800px; width:600px">
-    {% endfor %}
-  {% endif %}
-  </div>
+        {% if articles %}
+        {% for article in articles %}
+        <div class="col-sm-6 col-md-3">
+            <h1>{{article.title}}</h1>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+        {% if projects %}
+        {% for project in projects %}
+        <!--Display  projects  -->
+
+        <div class="col-md-3">
+            <img src="{{project.project.url}}" class="img-responsive" alt="Project" data-toggle="modal" data-target="#{{project.id}}"
+                style="height: 800px; width:600px">
+            <h6><strong>Project-title:</strong>{{ project.title}} </h6>
+            <h6><strong>Project-description:</strong>{{ project.project_description}} </h6>
+            <a href="{{project.project_link}}"> project_link</a>
+
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
