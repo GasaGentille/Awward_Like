@@ -19,25 +19,12 @@
         {% for article in articles %}
         <div class="col-sm-6 col-md-3">
             <h1>{{article.title}}</h1>
+            <img src="{{article.project.url}}">
         </div>
         {% endfor %}
 
         {% endif %}
 
-        {% if projects %}
-        {% for project in projects %}
-        <!--Display  projects  -->
-
-        <div class="col-md-3">
-            <img src="{{project.project.url}}" class="img-responsive" alt="Project" data-toggle="modal" data-target="#{{project.id}}"
-                style="height: 800px; width:600px">
-            <h6><strong>Project-title:</strong>{{ project.title}} </h6>
-            <h6><strong>Project-description:</strong>{{ project.project_description}} </h6>
-            <a href="{{project.project_link}}"> project_link</a>
-
-        </div>
-        {% endfor %}
-        {% endif %}
     </div>
 </div>
 {% endblock %}
