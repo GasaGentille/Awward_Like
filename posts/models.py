@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 
 class Project(models.Model):
     project = models.ImageField(upload_to = 'projects/',null=True )
-    project_title = models.CharField(max_length =30,null=True)
+    title = models.CharField(max_length =30,null=True)
     project_description = models.CharField(max_length =30,null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE ,null=True )
     project_link = models.URLField(max_length= 300,null=True)
@@ -25,8 +25,8 @@ class Project(models.Model):
 
     @classmethod
     def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
-        return news
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
 
 
 class Profile(models.Model):
