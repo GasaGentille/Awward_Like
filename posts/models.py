@@ -23,6 +23,11 @@ class Project(models.Model):
     def delete_delete(self):
         self.delete()
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        news = cls.objects.filter(title__icontains=search_term)
+        return news
+
 
 class Profile(models.Model):
     profile_photo= models.ImageField(upload_to = 'images/', null=True)

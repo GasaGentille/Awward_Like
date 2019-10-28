@@ -72,18 +72,17 @@ def update_profile(request):
         form = ProfileForm()
     return render(request, 'update.html', {"form": form})
 
-@login_required(login_url='/accounts/login/')
 def search_results(request):
 
-    if 'profile' in request.GET and request.GET["profile"]:
-        search_term = request.GET.get("profile")
-        searched_user = Profile.search_by_title(search_term)
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"user": searched_user})
+        return render(request, 'all-news/search.html',{"message":message,"articles": searched_articles})
 
     else:
-        message = "You haven't searched for any user"
-        return render(request, 'search.html',{"message":message})
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
 
 
