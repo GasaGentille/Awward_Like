@@ -10,8 +10,10 @@ class Project(models.Model):
     project_description = models.CharField(max_length =30,null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE ,null=True )
     project_link = models.URLField(max_length= 300,null=True)
-    
-    
+    design = models.IntegerField(blank=True,default=0)
+    usability = models.IntegerField(blank=True,default=0)
+    content = models.IntegerField(blank=True,default=0)
+    overall_score = models.IntegerField(blank=True,default=0)
     
 
     def __str__(self):
