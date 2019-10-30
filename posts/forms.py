@@ -9,17 +9,18 @@ class NewProjectForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('profile_photo','bio')
+        fields = ('profile_photo','bio','contact')
         exclude=['user']
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('profile_photo','bio')
+        fields = ('profile_photo','bio','contact')
         exclude=['user']
 
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['design', 'content','usability','rating']
+        exclude=['project']
         

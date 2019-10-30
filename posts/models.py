@@ -56,6 +56,7 @@ class Review(models.Model):
 class Profile(models.Model):
     profile_photo= models.ImageField(upload_to = 'images/', null=True)
     bio = models.CharField(max_length =30)
+    contact = models.CharField(max_length =30,null=True )
     user = models.OneToOneField(User,on_delete=models.CASCADE ,related_name="profile",null=True)
     project = models.ForeignKey(Project,null=True)
 

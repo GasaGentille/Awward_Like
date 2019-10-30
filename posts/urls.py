@@ -12,7 +12,7 @@ urlpatterns=[
     url(r'^edit/profile$', views.update_profile, name='edit_profile'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^review/$', views.review_detail, name='review_detail'),
-    url(r'^project/$', views.add_review, name='add_review'),
+    url(r'^project/(\d+)/$', views.add_review, name='add_review'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

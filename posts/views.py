@@ -90,8 +90,9 @@ def review_detail(request, review_id):
     review = Review.objects.get(id=review_id)
     return render(request, 'review_detail.html', {'review': review})
 
-def add_review(request):
-    project = Project.objects.all()
+def add_review(request,project_id):
+    project = Project.objects.filter(id=project_id).first()
+    print(project.project_description)
     form = ReviewForm(request.POST)
     if form.is_valid():
         rating = form.cleaned_data['rating']
@@ -108,5 +109,5 @@ def add_review(request):
        
         return redirect ('/')
 
-    return render(request, 'project_detail.html', {'project': project, 'form': form})
+    return render(request, 'project_detail.html', {'project': project, 'form': form, "project_id":project_id})
 
