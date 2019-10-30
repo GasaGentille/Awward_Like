@@ -37,6 +37,9 @@
 
                     <div class="col-sm-3" style="float:right; margin-top:-20px;margin-right:80px">
                         {% if user.is_authenticated%}
+
+                        <img src="{{user.profile.profile_photo.url}}" alt="Profile" class="img_profile" class="img-responsive"
+                style="border-radius: 50%; width: 50%">
                         <ul>
 
                             <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
