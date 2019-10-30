@@ -1,4 +1,4 @@
-from .models import Project,Profile
+from .models import Project,Profile,Review
 from django import forms
 
 class NewProjectForm(forms.ModelForm):
@@ -18,3 +18,8 @@ class UpdateProfileForm(forms.ModelForm):
         fields = ('profile_photo','bio')
         exclude=['user']
 
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['design', 'content','usability','rating']
+        
