@@ -1,6 +1,6 @@
 
 from django.shortcuts import render,redirect
-from .models import Project,Profile
+from .models import Project,Profile, Review
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm,ProfileForm
 
@@ -86,3 +86,6 @@ def search_results(request):
         return render(request, 'search.html',{"message":message})
 
 
+def review_detail(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'review_detail.html', {'review': review})
