@@ -10,7 +10,7 @@
     {% for review in reviews %}
     <div>
         <h4><a href="{% url 'review_detail'  %}">
-        {{ review.project.name }}
+        {{ review.project.title }}
         </a></h4>
         <h6>rated {{ review.rating }}</h6>
         

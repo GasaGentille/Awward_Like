@@ -45,6 +45,7 @@ class Review(models.Model):
         (9, '9'),
         (10, '10')
     )
+    user = models.ForeignKey(User,on_delete=models.CASCADE ,null=True )
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
     design = models.IntegerField(blank=True,default=0)
     usability = models.IntegerField(blank=True,default=0)

@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from .models import Project,Profile, Review
 from django.contrib.auth.decorators import login_required
-from .forms import NewProjectForm,ProfileForm
+from .forms import NewProjectForm,ProfileForm,ReviewForm
 
 
 # Create your views here.
@@ -87,6 +87,26 @@ def search_results(request):
 
 
 def review_detail(request, review_id):
-    review = get_object_or_404(Review, pk=review_id)
+    review = Review.objects.get(id=review_id)
     return render(request, 'review_detail.html', {'review': review})
+
+def add_review(request):
+    project = Project.objects.all()
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        rating = form.cleaned_data['rating']
+        design = form.cleaned_data['design']
+        usability = form.cleaned_data['usability']
+        content = form.cleaned_data['content']
+        review = Review()
+        review.project = project
+        review.design = design
+        review.rating = rating
+        review.usability = usability
+        review.content = content
+        review.save()
+       
+        return redirect ('/')
+
+    return render(request, 'project_detail.html', {'project': project, 'form': form})
 
