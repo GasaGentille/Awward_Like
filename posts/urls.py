@@ -13,6 +13,7 @@ urlpatterns=[
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^review/$', views.review_detail, name='review_detail'),
     url(r'^project/(\d+)/$', views.add_review, name='add_review'),
-]
+    url(r'^oneProject/(\d+)',views.single_project,name ='oneProject') , 
+    ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
