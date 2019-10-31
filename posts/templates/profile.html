@@ -16,8 +16,8 @@
 
 
         </div>
-        <div class="col-md-6">
-            <h4 class="account-heading" style="margin-left:30px">{{user.username}}</h4>
+        <div class="col-md-6" style="margin-top:40px">
+            <h4 class="account-heading text-secondary ml-4" style="margin-left:30px">Username:{{user.username}}</h4>
             <p class="text-secondary ml-4">Bio:{{user.profile.bio}}</p>
             <p class="text-secondary ml-4">Contact:{{user.profile}}</p>
         </div>
@@ -27,7 +27,11 @@
     <div class="row">
         {% for user in prjects %}
         <div class="col-md-4" style="margin-right: 5%;">
-            <img src="{{user.project.url}}">
+            <h2>MY PROJECTS</h2>
+            <img src="{{user.project.url}}" style="width: 500px;height: 400px">
+            <h6><strong>Project-title:</strong>{{ project.title}} </h6>
+            <h6>{{ project.project_description}} </h6>
+            <a href="{{project.project_link}}"> PROJECT SITE</a><hr>
         </div>
         {% endfor %}
 
