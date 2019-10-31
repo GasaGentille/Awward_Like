@@ -51,3 +51,8 @@ class ProfileTestClass(TestCase):
         delete = Profile.objects.filter().delete()
         profiles = Profile.objects.all()
         self.assertFalse(len(profiles)==1)
+
+    #  Test search method
+    def test_search_by_title(self):
+        projects = Project.objects.all()
+        self.assertFalse(len(projects)>0)
