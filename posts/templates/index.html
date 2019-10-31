@@ -19,13 +19,7 @@
         <h6><strong>Project-title:</strong>{{ project.title}} </h6>
         <h6>{{ project.project_description}} </h6>
         <a href="{% url 'oneProject' project.id %}">MORE</a>
-        <!-- <a href="{{project.project_link}}"> project_link</a>
-        <h3>Recent reviews</h3>
-        <h6>Rated {{ review.rating }} </h6>
-        <h5><a href="{% url 'review_detail' %}">
-                Read more
-            </a></h5>
-            <a href="{% url 'add_review' project.id %}"> Add Review </a> -->
+       
 
     </div>
     {% endfor %}

@@ -28,9 +28,6 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
-    def average_rating(self):
-        all_ratings = map(lambda x: x.rating, self.review_set.all())
-        return np.mean(all_ratings)
 
 class Review(models.Model):
     RATING_CHOICES = (
@@ -50,7 +47,6 @@ class Review(models.Model):
     design = models.IntegerField(blank=True,default=0)
     usability = models.IntegerField(blank=True,default=0)
     content = models.IntegerField(blank=True,default=0)
-    rating = models.IntegerField(choices=RATING_CHOICES)
 
 
 class Profile(models.Model):

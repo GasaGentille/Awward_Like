@@ -93,27 +93,34 @@ def review_detail(request, review_id):
 def add_review(request,project_id):
     project = Project.objects.filter(id=project_id).first()
     print(project.project_description)
-    form = ReviewForm(request.POST)
-    if form.is_valid():
-        rating = form.cleaned_data['rating']
-        design = form.cleaned_data['design']
-        usability = form.cleaned_data['usability']
-        content = form.cleaned_data['content']
-        review = Review()
-        review.project = project
-        review.design = design
-        review.rating = rating
-        review.usability = usability
-        review.content = content
-        review.save()
-       
-        return redirect ('/')
-
-    return render(request, 'single_project.html', {'project': project, 'form': form, "project_id":project_id})
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            design = form.cleaned_data['design']
+            usability = form.cleaned_data['usability']
+            content = form.cleaned_data['content']
+            review = Review()
+            review.project = project
+            review.design = design
+            review.usability = usability
+            review.content = content
+            review.save()
+        
+            return redirect ('/')
+    else:
+        form = ReviewForm()
+    return render(request, 'project_detail.html', {'project': project, 'form': form, "project_id":project_id})
 
 def single_project(request,project_id):
-    try:
+    # try:
         project = Project.objects.get(id = project_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"single_project.html", {"project":project})
+        design_array = []
+        reviews = Review.objects.filter(project=project)
+        for review in reviews:
+          design_array.append(review.design) 
+        design_average = sum(design_array)/len(design_array)
+        print(design_average)
+        # print(design_array)
+    # except DoesNotExist:
+    #     raise Http404()
+        return render(request,"single_project.html", {"project":project,"design_average":design_average})

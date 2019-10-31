@@ -21,6 +21,6 @@ class UpdateProfileForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['design', 'content','usability','rating']
+        fields = ['design', 'content','usability']
         exclude=['project']
         
