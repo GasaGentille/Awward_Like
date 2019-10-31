@@ -18,6 +18,7 @@
             style="width: 300px;height: 300px;filter: brightness(80%);">
         <h6><strong>Project-title:</strong>{{ project.title}} </h6>
         <h6>{{ project.project_description}} </h6>
+        <a href="{% url 'oneProject' project.id %}">MORE</a>
         <!-- <a href="{{project.project_link}}"> project_link</a>
         <h3>Recent reviews</h3>
         <h6>Rated {{ review.rating }} </h6>
