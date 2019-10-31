@@ -112,15 +112,19 @@ def add_review(request,project_id):
     return render(request, 'project_detail.html', {'project': project, 'form': form, "project_id":project_id})
 
 def single_project(request,project_id):
-    # try:
+    
         project = Project.objects.get(id = project_id)
         design_array = []
+        usability_array = []
+        content_array = []
         reviews = Review.objects.filter(project=project)
         for review in reviews:
           design_array.append(review.design) 
+          usability_array.append(review.usability) 
+          content_array.append(review.content) 
         design_average = sum(design_array)/len(design_array)
+        usability_average = sum(design_array)/len(usability_array)
+        content_average = sum(design_array)/len(content_array)
         print(design_average)
-        # print(design_array)
-    # except DoesNotExist:
-    #     raise Http404()
-        return render(request,"single_project.html", {"project":project,"design_average":design_average})
+       
+        return render(request,"single_project.html", {"project":project,"design_average":design_average, "usability_average":usability_average,"content_average":content_average})
