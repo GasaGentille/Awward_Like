@@ -4,7 +4,7 @@ from django import forms
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ('project','title','project_description','project_link')
+        fields = ('project','title','project_description')
 
 class ProfileForm(forms.ModelForm):
     class Meta:
