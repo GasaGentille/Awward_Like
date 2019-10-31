@@ -109,7 +109,7 @@ def add_review(request,project_id):
        
         return redirect ('/')
 
-    return render(request, 'project_detail.html', {'project': project, 'form': form, "project_id":project_id})
+    return render(request, 'single_project.html', {'project': project, 'form': form, "project_id":project_id})
 
 def single_project(request,project_id):
     try:
