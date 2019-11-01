@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'awwards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-MODE=config("MODE", default="dev")
+MODE=config("MODE", default="prod")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-if config('MODE')=="dev":
+if config('MODE')=="prod":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
