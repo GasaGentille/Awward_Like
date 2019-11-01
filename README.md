@@ -23,7 +23,7 @@ Admin ability to the pplication:
 - update projects details 
 
 
-You can visit the application using: https://instagrammappp.herokuapp.com/
+You can visit the application using: https://awwardlike.herokuapp.com/
 
 ## SetUp/Installation instructions
 
