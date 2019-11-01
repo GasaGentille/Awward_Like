@@ -28,10 +28,11 @@
         {% for user in prjects %}
         <div class="col-md-4" style="margin-right: 5%;">
             <h2>MY PROJECTS</h2>
-            <img src="{{user.project.url}}" style="width: 500px;height: 400px">
+            <img src="{{user.project.url}}" style="width: 300px;height: 300px">
             <h6><strong>Project-title:</strong>{{ project.title}} </h6>
             <h6>{{ project.project_description}} </h6>
             <a href="{{project.project_link}}" class="centered"> PROJECT SITE</a><hr>
+            <a href="{% url 'oneProject' project.id %}">MORE</a>
         </div>
         {% endfor %}
 

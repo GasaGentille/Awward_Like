@@ -1,0 +1,1 @@
+web: gunicorn Awward_Like.wsgi 
