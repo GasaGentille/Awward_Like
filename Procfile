@@ -1,1 +1,1 @@
-web: gunicorn Awward_Like.wsgi 
+web: gunicorn awwards.wsgi 
